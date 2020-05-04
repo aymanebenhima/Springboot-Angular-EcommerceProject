@@ -9,10 +9,12 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
+  //I use 8090 if it's not working with you try to use the delfault port for 8080
+  private port: number = 8090;
 
-  private baseUrl = 'http://localhost:8080/api/products';
+  private baseUrl = `http://localhost:${this.port}/api/products`;
 
-  private categoryUrl = 'http://localhost:8080/api/product-category';
+  private categoryUrl = `http://localhost:${this.port}/api/product-category`;
 
   constructor(private httpClient: HttpClient) { }
 
