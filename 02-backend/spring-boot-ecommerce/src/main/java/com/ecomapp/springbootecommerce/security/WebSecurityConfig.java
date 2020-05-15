@@ -55,6 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // configure access rules
                 .antMatchers(HttpMethod.POST,"/api/auth/**","/api/v1/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasAnyRole("USER","ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
