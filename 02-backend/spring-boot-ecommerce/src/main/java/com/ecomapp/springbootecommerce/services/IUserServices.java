@@ -11,4 +11,6 @@ public interface IUserServices {
     Optional<Client> getClientById(Long id);
 
     Client getCLientByUsername(String username);
+    
+    void deleteUserById(Long id);
 }

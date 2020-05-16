@@ -36,4 +36,11 @@ public class UserControllers {
     public Client getClientByUsername(@RequestParam(required=false) String username){
         return userServices.getCLientByUsername(username);
     }
+    
+    @DeleteMapping(path = "/clients/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public void deleteUserById(@PathVariable("id") Long id){
+        
+       userServices.deleteUserById(id);
+    }
 }

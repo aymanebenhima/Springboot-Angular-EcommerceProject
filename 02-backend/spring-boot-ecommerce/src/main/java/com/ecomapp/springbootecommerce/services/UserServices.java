@@ -35,4 +35,12 @@ public class UserServices implements IUserServices{
         if (client == null) throw new RuntimeException("Username Introuvable!");
         return client;
     }
+    
+    @Transactional
+	@Override
+	public void deleteUserById(Long id) {
+    	getClientById(id);
+		clientRepository.deleteById(id);
+		
+	}
 }
